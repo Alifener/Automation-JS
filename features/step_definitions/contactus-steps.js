@@ -5,6 +5,7 @@ var expect = require('chai').expect;
 module.exports = function() {
   this.World = require('../support/world.js').World;
 
+// The makeid() function copied from internet.
 function makeid()
 {
     var text = "";
