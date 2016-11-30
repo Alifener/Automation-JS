@@ -1,0 +1,22 @@
+{
+  "name": "YotiCucumberJs",
+  "version": "0.0.1",
+  "description": "YotiCucumberJs",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Alifener/YotiCucumberJs.git"
+  },
+  "scripts": {
+    "test": "node_modules/grunt-cli/bin/grunt"
+  },
+  "devDependencies": {
+    "cucumber": "^0.10.2",
+    "selenium-webdriver": "^2.53.2",
+    "chai": "^3.5.0",
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-exec": "^0.4.7",
+    "grunt-env": "^0.4.4"
+  }
+}
