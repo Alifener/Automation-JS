@@ -5,6 +5,17 @@ var expect = require('chai').expect;
 module.exports = function() {
   this.World = require('../support/world.js').World;
 
+function makeid()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 15; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
   this.Given(/^I go to Yoti web site$/, function () {
     this.driver.get('http://www.yoti.com');
   });
@@ -51,12 +62,12 @@ module.exports = function() {
       else if(typeForm == businessForm){
         locatorForm="#contact-business-form";
       }
-      this.driver.findElement({css: locatorForm +" #nameInput"}).sendKeys("myname surname");
-      this.driver.findElement({css: locatorForm +" #emailInput"}).sendKeys("testeremail@gmail.com");
+      this.driver.findElement({css: locatorForm +" #nameInput"}).sendKeys(makeid());
+      this.driver.findElement({css: locatorForm +" #emailInput"}).sendKeys(makeid()+"@gmail.com");
       if(typeForm == businessForm){
-           this.driver.findElement({css: locatorForm +" #companyInput"}).sendKeys("Yoti Company");
+           this.driver.findElement({css: locatorForm +" #companyInput"}).sendKeys(makeid());
       }
-      this.driver.findElement({css: locatorForm +" #messageInput"}).sendKeys("Tester was here");
+      this.driver.findElement({css: locatorForm +" #messageInput"}).sendKeys(makeid());
       var sendButton = this.driver.findElement({ css: locatorForm +" button"});
 
       this.driver.wait(function(){
@@ -67,7 +78,7 @@ module.exports = function() {
           });
       });
 
-    this.Then(/^I should see the confirmation message for "([^"]*)" form$/, function (typeForm) {
+    this.Then(/^I should see the confirmation message for "([^"]*)" form$/, {timeout : 5000}, function (typeForm) {
 
         var locatorConfMsg = "";
         var myYotiForm = "my Yoti";
